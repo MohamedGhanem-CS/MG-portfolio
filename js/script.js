@@ -626,7 +626,7 @@ Only talk about Mohamed and this portfolio. If asked about unrelated things, pol
                 // ✅ SECURE: Calls our Netlify Function proxy — API key lives on the server, never in the browser.
                 // The proxy endpoint is created at: /netlify/functions/chat.js
                 // Environment variable GROQ_API_KEY must be set in: Netlify Dashboard → Site Config → Env Vars
-                const response = await fetch('/.netlify/functions/chat', {
+                const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ messages: conversationHistory })
