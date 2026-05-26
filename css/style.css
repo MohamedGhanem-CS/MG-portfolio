@@ -85,6 +85,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--nav-height);
     overflow-x: hidden;
+    max-width: 100%;
     width: 100%;
 }
 
@@ -95,6 +96,7 @@ body {
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100%;
     width: 100%;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -148,6 +150,8 @@ h1, h2, h3, h4, h5, h6 {
 section {
     padding: 6rem 0;
     position: relative;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 /* --- Styled Section Headers --- */
@@ -422,6 +426,8 @@ section {
     padding-top: calc(var(--nav-height) + 2rem);
     padding-bottom: 4rem;
     overflow: hidden;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 /* Neural Network Background Canvas overlay */
@@ -579,6 +585,8 @@ section {
     display: flex;
     justify-content: center;
     position: relative;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .hero-dashboard {
