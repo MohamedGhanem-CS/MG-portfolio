@@ -552,7 +552,14 @@ Only talk about Mohamed and this portfolio. If asked about unrelated things, pol
         // Render typing indicator
         let typingIndicator = null;
         const showTypingIndicator = () => {
-            if (typingIndicator) return;
+            if (typingIndicator && messagesContainer.contains(typingIndicator)) return;
+            
+            if (typingIndicator) {
+                try {
+                    messagesContainer.removeChild(typingIndicator);
+                } catch (e) {}
+            }
+            
             typingIndicator = document.createElement('div');
             typingIndicator.className = 'ai-typing-indicator';
             typingIndicator.innerHTML = `
@@ -565,8 +572,12 @@ Only talk about Mohamed and this portfolio. If asked about unrelated things, pol
         };
 
         const removeTypingIndicator = () => {
-            if (typingIndicator) {
-                messagesContainer.removeChild(typingIndicator);
+            if (typingIndicator && messagesContainer.contains(typingIndicator)) {
+                try {
+                    messagesContainer.removeChild(typingIndicator);
+                } catch (e) {
+                    console.error("Error removing typing indicator:", e);
+                }
                 typingIndicator = null;
             }
         };

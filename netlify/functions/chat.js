@@ -5,12 +5,15 @@
 //  HOW IT WORKS:
 //  1. Browser sends { messages: [...] } to /.netlify/functions/chat
 //  2. This function reads GROQ_API_KEY from Netlify env vars (secret, never visible)
-//  3. Forwards the request to Groq and returns the reply to the browser
+//  3. Uses Node.js native 'https' module to securely forward to Groq, returning response.
+//     (Eliminates dependency on global 'fetch' to support older Node runtimes!)
 //
 //  SETUP (one-time, takes 2 minutes):
 //  → Netlify Dashboard → Your Site → Site configuration → Environment variables
 //  → Add variable: Key = GROQ_API_KEY, Value = [Your Groq API Key]
 // ==========================================================================
+
+const https = require('https');
 
 exports.handler = async (event) => {
     // Only allow POST requests
@@ -49,48 +52,77 @@ exports.handler = async (event) => {
         };
     }
 
-    try {
-        // Forward to Groq API using the secret server-side key
-        const groqResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: 'llama-3.3-70b-versatile',
-                messages: messages,
-                temperature: 1,
-                max_completion_tokens: 1024,
-                top_p: 1
-            })
+    const postData = JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        messages: messages,
+        temperature: 1,
+        max_completion_tokens: 1024,
+        top_p: 1
+    });
+
+    const options = {
+        hostname: 'api.groq.com',
+        port: 443,
+        path: '/openai/v1/chat/completions',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Length': Buffer.byteLength(postData)
+        }
+    };
+
+    // Promise wrapper for the native Node.js https request
+    const performRequest = () => new Promise((resolve, reject) => {
+        const req = https.request(options, (res) => {
+            let bodyData = '';
+            
+            res.on('data', (chunk) => {
+                bodyData += chunk;
+            });
+            
+            res.on('end', () => {
+                resolve({
+                    statusCode: res.statusCode,
+                    body: bodyData
+                });
+            });
         });
 
-        const data = await groqResponse.json();
+        req.on('error', (error) => {
+            reject(error);
+        });
 
-        if (!groqResponse.ok) {
+        req.write(postData);
+        req.end();
+    });
+
+    try {
+        const result = await performRequest();
+        const data = JSON.parse(result.body);
+
+        if (result.statusCode >= 200 && result.statusCode < 300) {
+            return {
+                statusCode: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'  // Allow portfolio domain
+                },
+                body: JSON.stringify({
+                    reply: data.choices?.[0]?.message?.content || null
+                })
+            };
+        } else {
             console.error('Groq API error:', data);
             return {
-                statusCode: groqResponse.status,
+                statusCode: result.statusCode,
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ error: data.error?.message || 'Groq API error' })
             };
         }
 
-        // Return only what the browser needs — NOT the raw API response with secrets
-        return {
-            statusCode: 200,
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'  // Allow portfolio domain
-            },
-            body: JSON.stringify({
-                reply: data.choices?.[0]?.message?.content || null
-            })
-        };
-
     } catch (error) {
-        console.error('Proxy fetch error:', error);
+        console.error('Proxy request error:', error);
         return {
             statusCode: 502,
             headers: { 'Content-Type': 'application/json' },
