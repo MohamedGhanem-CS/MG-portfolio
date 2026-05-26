@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "title": "PromptCraft Studio",
+      "description": "A highly optimized local prompt workbench that lets developers structure, test, version, and compare system instructions across Claude, Gemini, and DeepSeek model environments. Built with visual token counter logs, sandbox parameters, and prompt history backups.",
+      "image_key": "promptcraft",
+      "tags": [
+        { "tag": "Prompt Engineering" },
+        { "tag": "API Integration" },
+        { "tag": "Vanilla JS" }
+      ],
+      "github_url": "https://github.com/MohamedGhanem-CS",
+      "demo_url": ""
+    },
+    {
+      "title": "NeuralForge Simulator",
+      "description": "An educational single-page simulator animating standard neural network components. Visually renders node inputs, weights, feedforward operations, activation functions, and backpropagation mechanics in real-time inside the browser window.",
+      "image_key": "neuralforge",
+      "tags": [
+        { "tag": "HTML5 Canvas" },
+        { "tag": "Machine Learning" },
+        { "tag": "Education" }
+      ],
+      "github_url": "https://github.com/MohamedGhanem-CS",
+      "demo_url": ""
+    },
+    {
+      "title": "LocalAgent Assistant",
+      "description": "A smart command-line helper using Ollama and local LLM modules (like Llama-3-8B and DeepSeek-Coder). Automates file classification, codebase analysis, and structural syntax checking directly on the user's hard drive without external API latency.",
+      "image_key": "localagent",
+      "tags": [
+        { "tag": "Python" },
+        { "tag": "Ollama" },
+        { "tag": "Automation" }
+      ],
+      "github_url": "https://github.com/MohamedGhanem-CS",
+      "demo_url": ""
+    },
+    {
+      "title": "PyStream Analytics",
+      "description": "A highly optimized, open-source performance library that parses and tracks model inference times, GPU memory usage, and throughput metrics in real-time, helping developers pinpoint pipeline execution bottlenecks.",
+      "image_key": "pystream",
+      "tags": [
+        { "tag": "Python" },
+        { "tag": "Diagnostics" },
+        { "tag": "Telemetry" }
+      ],
+      "github_url": "https://github.com/MohamedGhanem-CS",
+      "demo_url": ""
+    }
+  ]
+}

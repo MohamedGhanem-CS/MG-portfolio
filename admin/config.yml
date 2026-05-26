@@ -1,0 +1,86 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+
+collections:
+  - name: "profile"
+    label: "Profile Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/profile.json"
+        label: "Hero & Contact Info"
+        name: "profile"
+        fields:
+          - { label: "Badge Text", name: "badge", widget: "string" }
+          - { label: "Full Name", name: "name", widget: "string" }
+          - { label: "Subtitle List (Typing Animation)", name: "subtitles", widget: "list", field: { label: "Word/Role", name: "subtitle", widget: "string" } }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Profile Image", name: "profile_image", widget: "image" }
+          - { label: "Gmail Address", name: "gmail", widget: "string" }
+          - { label: "GitHub URL", name: "github", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - { label: "Resume URL (PDF)", name: "resume", widget: "file", required: false }
+
+  - name: "about"
+    label: "About Me"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/about.json"
+        label: "About & Skills"
+        name: "about"
+        fields:
+          - { label: "About Bio Text", name: "bio", widget: "text" }
+          - { label: "Programming Languages", name: "languages", widget: "list", field: { label: "Language Name", name: "name", widget: "string" } }
+          - { label: "AI & Machine Learning", name: "ai_skills", widget: "list", field: { label: "Skill Name", name: "name", widget: "string" } }
+          - { label: "Developer Ecosystem", name: "dev_tools", widget: "list", field: { label: "Tool Name", name: "name", widget: "string" } }
+
+  - name: "projects_collection"
+    label: "Projects List"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/projects.json"
+        label: "All Projects"
+        name: "projects"
+        fields:
+          - name: "items"
+            label: "Projects"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image / Icon Key", name: "image_key", widget: "select", options: ["promptcraft", "neuralforge", "localagent", "pystream", "default"] }
+              - { label: "Tags", name: "tags", widget: "list", field: { label: "Tag", name: "tag", widget: "string" } }
+              - { label: "GitHub URL", name: "github_url", widget: "string" }
+              - { label: "Demo URL", name: "demo_url", widget: "string", required: false }
+
+  - name: "experience_collection"
+    label: "Experience Timeline"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/experience.json"
+        label: "Timeline Events"
+        name: "experience"
+        fields:
+          - name: "items"
+            label: "Events"
+            widget: "list"
+            fields:
+              - { label: "Role / Achievement Title", name: "title", widget: "string" }
+              - { label: "Organization / Company", name: "organization", widget: "string" }
+              - { label: "Duration / Date Text (e.g. 2022 - Present)", name: "date", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Detail Bullets", name: "bullets", widget: "list", field: { label: "Detail Bullet", name: "bullet", widget: "string" } }
+              - { label: "Type", name: "type", widget: "select", options: ["education", "work", "certification"] }

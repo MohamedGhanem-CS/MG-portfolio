@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "title": "Computer Science Scholar",
+      "organization": "El Shorouk Academy",
+      "date": "2022 - Present",
+      "location": "Cairo, Egypt",
+      "bullets": [
+        { "bullet": "Deepening understanding of core Computer Science principles, including advanced algorithms, data structures, computer networks, and operating systems." },
+        { "bullet": "Leading study circles to resolve complex code debugging, object-oriented concepts, and software pattern problems." },
+        { "bullet": "Developing local utility databases using structured SQL interfaces and relational schemas." }
+      ],
+      "type": "education"
+    },
+    {
+      "title": "AI Open-Source Developer & Researcher",
+      "organization": "Self-Directed Development",
+      "date": "2023 - Present",
+      "location": "Remote",
+      "bullets": [
+        { "bullet": "Investigating structural prompt templates and LLM response validation, achieving high factual accuracy through advanced prompt patterns." },
+        { "bullet": "Designing and hosting modular scripting toolsets in Python and C# to automate workspace management and folder hierarchy auditing." },
+        { "bullet": "Publishing local diagnostics tools tracking latency profiles of off-the-shelf and open-source models." }
+      ],
+      "type": "work"
+    },
+    {
+      "title": "Python Programming Specialization",
+      "organization": "IEEE Training Certificate",
+      "date": "2024",
+      "location": "IEEE Section",
+      "bullets": [
+        { "bullet": "Completed structured programming courses focused on professional Python implementation, object-oriented concepts, and algorithmic challenges." },
+        { "bullet": "Engineered custom scripts for parsing file systems and structured payloads during automated testing validations." },
+        { "bullet": "Collaborated on building small interactive console utilities with strict code cleanliness." }
+      ],
+      "type": "certification"
+    }
+  ]
+}

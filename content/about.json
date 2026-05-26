@@ -1,0 +1,25 @@
+{
+  "bio": "I am currently pursuing a degree in Computer Science at El Shorouk Academy, where I am building a rigorous foundation in algorithms, databases, and software architectures. Driven by an intense curiosity for artificial intelligence, I spend my self-directed hours studying machine learning models and optimizing agentic architectures.\n\nMy technical core spans languages like Python, C#, and C, combined with extensive, hands-on prompt engineering across industry-leading ecosystems such as GPT-4, Claude, Gemini, Kimi, Perplexity, and DeepSeek. I believe AI shouldn't just be an off-the-shelf integration; I strive to master the mathematical and architectural mechanisms behind them to create functional, responsive solutions.",
+  "languages": [
+    { "name": "Python" },
+    { "name": "C# (C-Sharp)" },
+    { "name": "C Language" },
+    { "name": "HTML5 & CSS3" },
+    { "name": "JavaScript" },
+    { "name": "SQL & Databases" }
+  ],
+  "ai_skills": [
+    { "name": "Prompt Engineering" },
+    { "name": "LLM API Orchestration" },
+    { "name": "RAG & Vector Search" },
+    { "name": "Model Inference Evaluation" },
+    { "name": "Ollama & Local LLMs" }
+  ],
+  "dev_tools": [
+    { "name": "Git & GitHub" },
+    { "name": "VS Code" },
+    { "name": "Jupyter Notebooks" },
+    { "name": "Docker" },
+    { "name": "Scratch Coding" }
+  ]
+}

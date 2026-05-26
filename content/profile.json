@@ -1,0 +1,16 @@
+{
+  "badge": "Aspiring AI Engineer & Developer",
+  "name": "Mohamed Ghanem",
+  "subtitles": [
+    { "subtitle": "Computer Science Student" },
+    { "subtitle": "Aspiring AI Engineer" },
+    { "subtitle": "LLMs & Prompt Engineer" },
+    { "subtitle": "Python & C# Developer" }
+  ],
+  "description": "Bridging core Computer Science fundamentals with cutting-edge Artificial Intelligence. Dedicated to unlocking the internal mechanics of Machine Learning models and prompt architectures to build accessible tools that add real-world value.",
+  "profile_image": "img/profile.jpg",
+  "gmail": "mohamed.ghanem.work@gmail.com",
+  "github": "https://github.com/MohamedGhanem-CS",
+  "linkedin": "https://linkedin.com",
+  "resume": "#"
+}

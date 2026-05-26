@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Ghanem | AI Engineer & CS Student Portfolio</title>
+    
+    <!-- Meta SEO Tags -->
+    <meta name="description" content="Professional portfolio of Mohamed Ghanem - Computer Science Student at El Shorouk Academy and aspiring AI Engineer. Showcasing projects in machine learning, advanced prompt engineering, and vanilla web systems.">
+    <meta name="keywords" content="Mohamed Ghanem, AI Engineer, Computer Science, El Shorouk Academy, Python, C#, Prompt Engineering, Machine Learning, Developer Portfolio">
+    <meta name="author" content="Mohamed Ghanem">
+
+    <!-- CSS Styling -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         GLASSMORPHIC HEADER / NAVBAR
+         ========================================== -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#hero" class="logo" id="nav-logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                MG
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav-links" id="nav-menu">
+                <a href="#about" class="nav-link-item active" id="lnk-about">About</a>
+                <a href="#skills" class="nav-link-item" id="lnk-skills">Skills</a>
+                <a href="#projects" class="nav-link-item" id="lnk-projects">Projects</a>
+                <a href="#experience" class="nav-link-item" id="lnk-experience">Experience</a>
+                <a href="#services" class="nav-link-item" id="lnk-services">Services</a>
+                <a href="#contact" class="nav-link-item" id="lnk-contact">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Light / Dark Mode Toggle -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle visual theme">
+                    <svg class="moon-icon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <a href="#contact" class="btn-nav-contact" id="btn-nav-contact">Let's Connect</a>
+                
+                <!-- Mobile Menu Hamburger -->
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         HERO SECTION WITH NEURAL NET CANVAS
+         ========================================== -->
+    <section class="hero" id="hero">
+        <canvas class="hero-canvas" id="neural-canvas"></canvas>
+        <div class="glow-shape-1"></div>
+        <div class="glow-shape-2"></div>
+        
+        <div class="container hero-grid">
+            <div class="hero-content reveal-on-scroll">
+                <div class="hero-badge">
+                    <span></span> Aspiring AI Engineer & Developer
+                </div>
+                <h1 class="hero-title">
+                    Hi, I am <br>
+                    <span class="name">Mohamed Ghanem</span>
+                </h1>
+                
+                <div class="hero-subtitle-container">
+                    <span class="hero-subtitle" id="typed-subtitle">Computer Science Student</span>
+                </div>
+
+                <p class="hero-desc">
+                    Bridging core Computer Science fundamentals with cutting-edge Artificial Intelligence. Dedicated to unlocking the internal mechanics of Machine Learning models and prompt architectures to build accessible tools that add real-world value.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary" id="hero-btn-projects">
+                        View Projects
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary" id="hero-btn-contact">Get In Touch</a>
+                </div>
+            </div>
+
+            <!-- Profile Image Frame in Hero -->
+            <div class="hero-visual reveal-on-scroll">
+                <div class="about-img-container" style="max-width: 320px; width: 100%;">
+                    <div class="about-img-border"></div>
+                    <div class="about-img-frame">
+                        <img src="img/profile.jpg" alt="Mohamed Ghanem Profile" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         ABOUT ME SECTION
+         ========================================== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header reveal-on-scroll">
+                <span class="subtitle">My Story</span>
+                <h2 class="title">About Me</h2>
+            </div>
+            
+            <div class="about-grid">
+                <!-- Interactive 3D/Glassmorphic Code Dashboard in About -->
+                <div class="about-img-container reveal-on-scroll" style="display: flex; justify-content: center; align-items: center;">
+                    <div class="hero-dashboard" id="interactive-dashboard">
+                        <div class="db-header">
+                            <div class="db-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="db-badge">Ollama Agent</div>
+                        </div>
+                        <div class="db-body">
+                            <div class="db-line"><span class="keyword">import</span> <span class="variable">ollama</span></div>
+                            <div class="db-line"><span class="keyword">class</span> <span class="value">AIEngineer</span>:</div>
+                            <div class="db-line">&nbsp;&nbsp;<span class="keyword">def</span> <span class="variable">__init__</span>(<span class="variable">self</span>):</div>
+                            <div class="db-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">self</span>.<span class="variable">name</span> = <span class="string">"Mohamed Ghanem"</span></div>
+                            <div class="db-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">self</span>.<span class="variable">focus</span> = [<span class="string">"LLMs"</span>, <span class="string">"RAG"</span>, <span class="string">"ML"</span>]</div>
+                            <div class="db-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">self</span>.<span class="variable">academy</span> = <span class="string">"El Shorouk"</span></div>
+                            <div class="db-line">&nbsp;&nbsp;<span class="keyword">def</span> <span class="variable">engineer</span>(<span class="variable">self</span>):</div>
+                            <div class="db-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">"Bridging math and code"</span></div>
+                        </div>
+                        <div class="db-footer">
+                            <div class="db-stat"><span class="num">100%</span> <span>Inference OK</span></div>
+                            <div class="db-stat"><span class="num">0.05s</span> <span>Latency</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-content reveal-on-scroll">
+                    <h3>Deepening Computer Science, Architecting Practical AI</h3>
+                    <p>
+                        I am currently pursuing a degree in Computer Science at El Shorouk Academy, where I am building a rigorous foundation in algorithms, databases, and software architectures. Driven by an intense curiosity for artificial intelligence, I spend my self-directed hours studying machine learning models and optimizing agentic architectures.
+                    </p>
+                    <p>
+                        My technical core spans languages like Python, C#, and C, combined with extensive, hands-on prompt engineering across industry-leading ecosystems such as GPT-4, Claude, Gemini, Kimi, Perplexity, and DeepSeek. I believe AI shouldn't just be an off-the-shelf integration; I strive to master the mathematical and architectural mechanisms behind them to create functional, responsive solutions.
+                    </p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-card" id="stat-academics">
+                            <div class="stat-num">3+</div>
+                            <div class="stat-label">Years of CS Study</div>
+                        </div>
+                        <div class="stat-card" id="stat-tools">
+                            <div class="stat-num">6+</div>
+                            <div class="stat-label">AI Systems Mastered</div>
+                        </div>
+                        <div class="stat-card" id="stat-quality">
+                            <div class="stat-num">100%</div>
+                            <div class="stat-label">Practical Dev Focus</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SKILLS DASHBOARD SECTION
+         ========================================== -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header reveal-on-scroll">
+                <span class="subtitle">Expertise</span>
+                <h2 class="title">Technical Core</h2>
+            </div>
+
+            <!-- Tab Headers -->
+            <div class="skills-tab-header reveal-on-scroll">
+                <button class="skill-tab-btn active" data-tab="tab-languages" id="btn-tab-languages">Programming Languages</button>
+                <button class="skill-tab-btn" data-tab="tab-ai" id="btn-tab-ai">AI Systems & ML</button>
+                <button class="skill-tab-btn" data-tab="tab-tools" id="btn-tab-tools">Developer Ecosystem</button>
+            </div>
+
+            <!-- Tab Content Wrappers -->
+            <div class="skills-wrapper reveal-on-scroll">
+                
+                <!-- Panel 1: Languages -->
+                <div class="skills-panel active" id="tab-languages">
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>Python</h4>
+                            <span>Object Oriented & ML</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>C# (C-Sharp)</h4>
+                            <span>Enterprise Systems & OOP</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>C Language</h4>
+                            <span>Low-Level Logic & Memory</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>HTML5 & CSS3</h4>
+                            <span>Modern Layouts & System</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>JavaScript</h4>
+                            <span>Dynamic Interactions</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>SQL & Databases</h4>
+                            <span>Structured Queries</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 2: AI / ML -->
+                <div class="skills-panel" id="tab-ai">
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><line x1="6" y1="9" x2="6" y2="21"></line><path d="M9 6h9M6 15h9"/></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>Prompt Engineering</h4>
+                            <span>System prompts & Contexts</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>LLM API Orchestration</h4>
+                            <span>OpenAI, Claude & DeepSeek</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"/></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>RAG & Vector Search</h4>
+                            <span>Context retrieval tools</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>Model Inference Evaluation</h4>
+                            <span>Latency & Token diagnostics</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>Ollama & Local LLMs</h4>
+                            <span>System deployment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 3: Ecosystem -->
+                <div class="skills-panel" id="tab-tools">
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>Git & GitHub</h4>
+                            <span>Version control & Collab</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>VS Code</h4>
+                            <span>Advanced IDE workflows</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>Jupyter Notebooks</h4>
+                            <span>Data analysis & Prototyping</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="5" ry="5"></ellipse><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>Docker</h4>
+                            <span>Containerization Basics</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-9M12 8V2M5 12h14"/></svg>
+                        </div>
+                        <div class="skill-info">
+                            <h4>Scratch Coding</h4>
+                            <span>Logical systems foundation</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PROJECTS SECTION (GRID OF GLASS CARDS)
+         ========================================== -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-header reveal-on-scroll">
+                <span class="subtitle">My Work</span>
+                <h2 class="title">AI & Software Projects</h2>
+            </div>
+
+            <div class="projects-grid">
+                
+                <!-- Project 1: PromptCraft Studio -->
+                <div class="project-card reveal-on-scroll" id="project-promptcraft">
+                    <div class="project-banner">
+                        <div class="project-banner-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="9" y1="3" x2="9" y2="21"></line>
+                                <line x1="9" y1="9" x2="21" y2="9"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">Prompt Engineering</span>
+                            <span class="project-tag">API Integration</span>
+                            <span class="project-tag">Vanilla JS</span>
+                        </div>
+                        <h3 class="project-title">PromptCraft Studio</h3>
+                        <p class="project-desc">
+                            A highly optimized local prompt workbench that lets developers structure, test, version, and compare system instructions across Claude, Gemini, and DeepSeek model environments. Built with visual token counter logs, sandbox parameters, and prompt history backups.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/MohamedGhanem-CS" class="project-link" target="_blank" rel="noopener noreferrer">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                Codebase
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: NeuralForge Simulator -->
+                <div class="project-card reveal-on-scroll" id="project-neuralforge">
+                    <div class="project-banner">
+                        <div class="project-banner-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="5" r="3"></circle>
+                                <circle cx="5" cy="19" r="3"></circle>
+                                <circle cx="19" cy="19" r="3"></circle>
+                                <line x1="12" y1="8" x2="5" y2="16"></line>
+                                <line x1="12" y1="8" x2="19" y2="16"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5 Canvas</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Education</span>
+                        </div>
+                        <h3 class="project-title">NeuralForge Simulator</h3>
+                        <p class="project-desc">
+                            An educational single-page simulator animating standard neural network components. Visually renders node inputs, weights, feedforward operations, activation functions, and backpropagation mechanics in real-time inside the browser window.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/MohamedGhanem-CS" class="project-link" target="_blank" rel="noopener noreferrer">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                Codebase
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: LocalAgent Assistant -->
+                <div class="project-card reveal-on-scroll" id="project-localagent">
+                    <div class="project-banner">
+                        <div class="project-banner-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Ollama</span>
+                            <span class="project-tag">Automation</span>
+                        </div>
+                        <h3 class="project-title">LocalAgent Assistant</h3>
+                        <p class="project-desc">
+                            A smart command-line helper using Ollama and local LLM modules (like Llama-3-8B and DeepSeek-Coder). Automates file classification, codebase analysis, and structural syntax checking directly on the user's hard drive without external API latency.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/MohamedGhanem-CS" class="project-link" target="_blank" rel="noopener noreferrer">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                Codebase
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: PyStream Analytics -->
+                <div class="project-card reveal-on-scroll" id="project-pystream">
+                    <div class="project-banner">
+                        <div class="project-banner-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Diagnostics</span>
+                            <span class="project-tag">Telemetry</span>
+                        </div>
+                        <h3 class="project-title">PyStream Analytics</h3>
+                        <p class="project-desc">
+                            A highly optimized, open-source performance library that parses and tracks model inference times, GPU memory usage, and throughput metrics in real-time, helping developers pinpoint pipeline execution bottlenecks.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/MohamedGhanem-CS" class="project-link" target="_blank" rel="noopener noreferrer">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                Codebase
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PROFESSIONAL EXPERIENCE (VERTICAL TIMELINE)
+         ========================================== -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-header reveal-on-scroll">
+                <span class="subtitle">History</span>
+                <h2 class="title">Education & Journey</h2>
+            </div>
+
+            <div class="experience-timeline">
+                
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item reveal-on-scroll" id="exp-academy">
+                    <div class="timeline-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div class="timeline-title">
+                                <h3>Computer Science Scholar</h3>
+                                <div class="company">El Shorouk Academy</div>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="timeline-date">2022 - Present</span>
+                                <div class="timeline-location">Cairo, Egypt</div>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <ul>
+                                <li>Deepening understanding of core Computer Science principles, including advanced algorithms, data structures, computer networks, and operating systems.</li>
+                                <li>Leading study circles to resolve complex code debugging, object-oriented concepts, and software pattern problems.</li>
+                                <li>Developing local utility databases using structured SQL interfaces and relational schemas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item reveal-on-scroll" id="exp-open-source">
+                    <div class="timeline-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div class="timeline-title">
+                                <h3>AI Open-Source Developer & Researcher</h3>
+                                <div class="company">Self-Directed Development</div>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="timeline-date">2023 - Present</span>
+                                <div class="timeline-location">Remote</div>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <ul>
+                                <li>Investigating structural prompt templates and LLM response validation, achieving high factual accuracy through advanced prompt patterns.</li>
+                                <li>Designing and hosting modular scripting toolsets in Python and C# to automate workspace management and folder hierarchy auditing.</li>
+                                <li>Publishing local diagnostics tools tracking latency profiles of off-the-shelf and open-source models.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item reveal-on-scroll" id="exp-training">
+                    <div class="timeline-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div class="timeline-title">
+                                <h3>Python Programming Specialization</h3>
+                                <div class="company">IEEE Training Certificate</div>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="timeline-date">2024</span>
+                                <div class="timeline-location">IEEE Section</div>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <ul>
+                                <li>Completed structured programming courses focused on professional Python implementation, object-oriented concepts, and algorithmic challenges.</li>
+                                <li>Engineered custom scripts for parsing file systems and structured payloads during automated testing validations.</li>
+                                <li>Collaborated on building small interactive console utilities with strict code cleanliness.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PROFESSIONAL SERVICES SECTION
+         ========================================== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal-on-scroll">
+                <span class="subtitle">What I Do</span>
+                <h2 class="title">My Professional Services</h2>
+            </div>
+
+            <div class="services-grid">
+                
+                <!-- Service 1 -->
+                <div class="service-card reveal-on-scroll" id="service-prompting">
+                    <div class="service-icon-wrap">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><line x1="6" y1="9" x2="6" y2="21"></line><path d="M9 6h9M6 15h9"/></svg>
+                    </div>
+                    <h3 class="service-title">AI Integration & Prompting</h3>
+                    <p class="service-desc">
+                        Designing advanced prompt structures, system instruction paradigms, and structured outputs (JSON/YAML) to successfully embed modern LLM capabilities into corporate software products.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card reveal-on-scroll" id="service-software">
+                    <div class="service-icon-wrap">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <h3 class="service-title">Custom Tool Development</h3>
+                    <p class="service-desc">
+                        Building functional, lightweight automation tools, desktop utilities, and custom scripting layers in Python and C# that eliminate repetitive workflows and clean up business backends.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card reveal-on-scroll" id="service-logic">
+                    <div class="service-icon-wrap">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                    </div>
+                    <h3 class="service-title">Algorithmic Problem-Solving</h3>
+                    <p class="service-desc">
+                        Reviewing database setups, structuring SQL relations, optimizing computational complexities, and developing neat backend logical blocks for software projects.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CAREER OBJECTIVE PROFILE SECTION
+         ========================================== -->
+    <section class="objective" id="objective">
+        <div class="container">
+            <div class="objective-card reveal-on-scroll" id="obj-profile-card">
+                <p class="objective-quote">
+                    To merge academic computer science fundamentals with state-of-the-art AI systems and prompt engineering to architect robust, accessible, and high-impact digital tools that solve complex developer and consumer problems.
+                </p>
+                <div class="objective-author">
+                    <h4>Mohamed Ghanem</h4>
+                    <span>AI Developer & CS Student</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTACT SECTION (WITH INTERACTIVE FORM)
+         ========================================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header reveal-on-scroll">
+                <span class="subtitle">Reach Out</span>
+                <h2 class="title">Get In Touch</h2>
+            </div>
+
+            <div class="contact-grid">
+                
+                <!-- Contact Info Panel -->
+                <div class="contact-info reveal-on-scroll">
+                    <div class="contact-info-title">
+                        <h3>Let's Collaborate</h3>
+                        <p>Have an interesting project, looking to integrate custom LLM logic, or want to discuss general software workflows? Drop a line, and let's construct it together.</p>
+                    </div>
+
+                    <div class="contact-details">
+                        <!-- Direct Email -->
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div class="contact-text">
+                                <span class="label">Professional Email</span>
+                                <span class="value"><a href="mailto:mohamed.ghanem.work@gmail.com">mohamed.ghanem.work@gmail.com</a></span>
+                            </div>
+                        </div>
+
+                        <!-- Academics -->
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                            </div>
+                            <div class="contact-text">
+                                <span class="label">Affiliation</span>
+                                <span class="value">Computer Science Student at El Shorouk Academy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Social Profiles -->
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/mohamed-ghanem-cs" class="social-btn linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="https://github.com/MohamedGhanem-CS" class="social-btn github" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mohamed.ghanem.work@gmail.com" class="social-btn email" target="_blank" rel="noopener noreferrer" aria-label="Email Address">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form Panel -->
+                <div class="contact-card reveal-on-scroll">
+                    <form class="contact-form" id="contact-form">
+                        <!-- Add Web3Forms Access Key here -->
+                        <input type="hidden" name="access_key" value="a73ee6aa-ebe1-4362-b81e-e240ea07daf0">
+                        
+                        <div class="form-group">
+                            <label for="frm-name" class="form-label">Full Name</label>
+                            <input type="text" id="frm-name" name="name" class="form-input" placeholder="e.g. Jane Doe" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="frm-email" class="form-label">Email Address</label>
+                            <input type="email" id="frm-email" name="email" class="form-input" placeholder="e.g. jane@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="frm-subject" class="form-label">Subject</label>
+                            <input type="text" id="frm-subject" name="subject" class="form-input" placeholder="How can I assist you?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="frm-msg" class="form-label">Message</label>
+                            <textarea id="frm-msg" name="message" class="form-textarea" placeholder="Tell me about your project detail..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="btn-submit">
+                            Send Message
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+
+                        <div class="form-success-popup" id="form-success">
+                            Success! Your request has been logged. Let's build something brilliant together soon.
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER AND ANCHOR NAV SUBMIT
+         ========================================== -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-copyright">
+                &copy; <span id="year">2026</span> Mohamed Ghanem. Built with pure HTML, CSS, and Vanilla JS.
+            </div>
+            
+            <a href="#hero" class="footer-backtotop" id="btn-back-to-top" aria-label="Scroll back to hero">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="19" x2="12" y2="5"></line>
+                    <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         AI AGENT PORTFOLIO ASSISTANT WIDGET
+         ========================================== -->
+    <div class="ai-chat-widget" id="ai-chat-widget">
+        <button class="ai-chat-toggle" id="ai-chat-toggle" aria-label="Open MG AI Assistant">
+            <div class="pulse-ring"></div>
+            <!-- Dynamic AI Brain SVG Icon -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                <path d="M12 6v12"></path>
+                <path d="M8 10h8"></path>
+                <path d="M12 12c-2 0-3-1-3-3s1-3 3-3 3 1 3 3-1 3-3 3z"></path>
+                <path d="M12 12c2 0 3 1 3 3s-1 3-3 3-3-1-3-3 1-3 3-3z"></path>
+            </svg>
+        </button>
+
+        <div class="ai-chat-container">
+            <div class="ai-chat-header">
+                <div class="ai-chat-header-info">
+                    <div class="ai-chat-avatar" style="font-size: 0.8rem;">MG</div>
+                    <div class="ai-chat-header-title">
+                        <h4>MG AI Assistant</h4>
+                        <span>Online | Powered by Llama 3.3</span>
+                    </div>
+                </div>
+                <button class="ai-chat-close" id="ai-chat-close" aria-label="Close Chat">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="ai-chat-messages" id="ai-chat-messages">
+                <div class="ai-message incoming">
+                    Hello! I am MG AI Assistant. Ask me anything about Mohamed's skills, machine learning projects, academy background, or how to collaborate with him!
+                </div>
+                <div class="ai-chips" id="ai-chips">
+                    <button class="ai-chip" data-query="What are Mohamed's projects?">🚀 Projects</button>
+                    <button class="ai-chip" data-query="What are Mohamed's skills?">💡 Skills</button>
+                    <button class="ai-chip" data-query="How can I contact Mohamed?">📬 Contact</button>
+                    <button class="ai-chip" data-query="Tell me about Mohamed Ghanem">👤 About</button>
+                </div>
+            </div>
+
+            <div class="ai-chat-input-area">
+                <input type="text" class="ai-chat-input" id="ai-chat-input" placeholder="Ask about Mohamed..." aria-label="Type your message">
+                <button class="ai-chat-send" id="ai-chat-send" aria-label="Send Message">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactivity -->
+    <script src="js/cms-loader.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
