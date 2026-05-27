@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
+    }, { passive: true });
 
     // ==========================================
     // 4. ACTIVE SECTION OBSERVER (NAV INDICATORS)
@@ -155,6 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const roles = getRoles();
         const currentRole = roles[roleIndex % roles.length];
         
+        // Safety boundary check for dynamic CMS updates
+        if (charIndex > currentRole.length) {
+            charIndex = currentRole.length;
+        }
+
         if (isDeleting) {
             subtitleEl.textContent = currentRole.substring(0, charIndex - 1);
             charIndex--;
@@ -165,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             typingSpeed = 100; // Type normally
         }
 
-        if (!isDeleting && charIndex === currentRole.length) {
+        if (!isDeleting && charIndex >= currentRole.length) {
             // Pause at complete word
             isDeleting = true;
             typingSpeed = 2000; 
@@ -187,6 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const dashboard = document.getElementById('interactive-dashboard');
     if (dashboard) {
         const container = dashboard.parentElement;
+        const statusLabel = dashboard.querySelector('.db-footer .db-stat:nth-child(1) span:nth-child(2)');
+        const latencyVal = dashboard.querySelector('.db-footer .db-stat:nth-child(2) span:nth-child(1)');
         
         container.addEventListener('mousemove', (e) => {
             const rect = dashboard.getBoundingClientRect();
@@ -200,11 +207,21 @@ document.addEventListener('DOMContentLoaded', () => {
             
             dashboard.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`;
             dashboard.style.boxShadow = `${-tiltY * 1.5}px ${tiltX * 1.5}px 35px rgba(99, 102, 241, 0.25)`;
+            dashboard.style.borderColor = 'rgba(6, 182, 212, 0.4)';
+            dashboard.style.textShadow = '0 0 8px rgba(6, 182, 212, 0.35)';
+            
+            if (statusLabel) statusLabel.textContent = "Analyzing Vector...";
+            if (latencyVal) latencyVal.textContent = "Active";
         });
 
         container.addEventListener('mouseleave', () => {
             dashboard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
             dashboard.style.boxShadow = 'var(--shadow-premium)';
+            dashboard.style.borderColor = 'var(--border-color)';
+            dashboard.style.textShadow = 'none';
+            
+            if (statusLabel) statusLabel.textContent = "Inference OK";
+            if (latencyVal) latencyVal.textContent = "0.05s";
         });
     }
 
@@ -339,6 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const drawLines = () => {
             for (let a = 0; a < particles.length; a++) {
+                // Connect particles to each other
                 for (let b = a; b < particles.length; b++) {
                     let dx = particles[a].x - particles[b].x;
                     let dy = particles[a].y - particles[b].y;
@@ -354,6 +372,26 @@ document.addEventListener('DOMContentLoaded', () => {
                         ctx.beginPath();
                         ctx.moveTo(particles[a].x, particles[a].y);
                         ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+
+                // Connect particles to mouse cursor (Upgrade A: Interactive Mouse Linkage!)
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - particles[a].x;
+                    let dy = mouse.y - particles[a].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouse.radius) {
+                        const proximity = 1 - (distance / mouse.radius);
+                        // Make connections to mouse look brighter and glowing
+                        const alpha = proximity * (htmlElement.classList.contains('light-mode') ? 0.25 : 0.35);
+                        const baseRGB = htmlElement.classList.contains('light-mode') ? '6, 182, 212' : '6, 182, 212'; // Glowing Cyan link
+                        ctx.strokeStyle = `rgba(${baseRGB}, ${alpha.toFixed(3)})`;
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(mouse.x, mouse.y);
                         ctx.stroke();
                     }
                 }
@@ -608,9 +646,14 @@ Only talk about Mohamed and this portfolio. If asked about unrelated things, pol
         };
 
         // Handle sending messages
+        let isFetchingResponse = false;
         const handleSendMessage = async () => {
             const query = input.value.trim();
-            if (!query) return;
+            if (!query || isFetchingResponse) return;
+ 
+            isFetchingResponse = true;
+            sendBtn.style.pointerEvents = 'none';
+            sendBtn.style.opacity = '0.5';
 
             // Clear Input
             input.value = '';
@@ -651,6 +694,10 @@ Only talk about Mohamed and this portfolio. If asked about unrelated things, pol
                     removeTypingIndicator();
                     triggerLocalResponse(query);
                 }, 600);
+            } finally {
+                isFetchingResponse = false;
+                sendBtn.style.pointerEvents = 'auto';
+                sendBtn.style.opacity = '1';
             }
         };
 

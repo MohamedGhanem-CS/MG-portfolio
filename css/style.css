@@ -520,7 +520,7 @@ section {
     font-size: clamp(0.95rem, 4.5vw, 1.45rem);
     font-weight: 500;
     color: var(--text-secondary);
-    border-right: 2px solid var(--secondary);
+    border-right: 3px solid var(--secondary);
     white-space: nowrap;
     overflow: hidden;
     display: inline-block;
@@ -1792,8 +1792,14 @@ section {
 }
 
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--secondary) }
+    from, to { 
+        border-color: transparent;
+        filter: drop-shadow(0 0 0 transparent);
+    }
+    50% { 
+        border-color: var(--secondary);
+        filter: drop-shadow(0 0 6px var(--secondary));
+    }
 }
 
 /* Scroll reveal class setup */
