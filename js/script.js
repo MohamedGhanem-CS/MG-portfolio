@@ -206,9 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const tiltY = (x / (rect.width / 2)) * 10;
             
             dashboard.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`;
-            dashboard.style.boxShadow = `${-tiltY * 1.5}px ${tiltX * 1.5}px 35px rgba(99, 102, 241, 0.25)`;
-            dashboard.style.borderColor = 'rgba(6, 182, 212, 0.4)';
-            dashboard.style.textShadow = '0 0 8px rgba(6, 182, 212, 0.35)';
+            dashboard.style.boxShadow = `${-tiltY * 1.5}px ${tiltX * 1.5}px 35px rgba(14, 165, 233, 0.25)`;
+            dashboard.style.borderColor = 'rgba(14, 165, 233, 0.4)';
+            dashboard.style.textShadow = '0 0 8px rgba(14, 165, 233, 0.35)';
             
             if (statusLabel) statusLabel.textContent = "Analyzing Vector...";
             if (latencyVal) latencyVal.textContent = "Active";
@@ -269,20 +269,20 @@ document.addEventListener('DOMContentLoaded', () => {
             mouse.y = null;
         });
 
-        // Theme-sensitive colors
-        let particleColor = 'rgba(99, 102, 241, 0.45)'; // Indigo
-        let secondaryColor = 'rgba(6, 182, 212, 0.4)';  // Cyan
-        let lineColor = 'rgba(99, 102, 241, 0.08)';
+        // Theme-sensitive colors — Electric Blue palette
+        let particleColor = 'rgba(14, 165, 233, 0.45)'; // Electric Sky Blue
+        let secondaryColor = 'rgba(56, 189, 248, 0.4)'; // Bright Light Blue
+        let lineColor = 'rgba(14, 165, 233, 0.08)';
 
         window.updateCanvasTheme = (isLightMode) => {
             if (isLightMode) {
-                particleColor = 'rgba(79, 70, 229, 0.25)'; // Softer Indigo
-                secondaryColor = 'rgba(8, 145, 178, 0.25)';  // Softer Cyan
-                lineColor = 'rgba(79, 70, 229, 0.05)';
+                particleColor = 'rgba(2, 132, 199, 0.2)';  // Deeper Blue for light bg
+                secondaryColor = 'rgba(14, 165, 233, 0.2)'; // Sky Blue for light bg
+                lineColor = 'rgba(2, 132, 199, 0.05)';
             } else {
-                particleColor = 'rgba(99, 102, 241, 0.45)';
-                secondaryColor = 'rgba(6, 182, 212, 0.4)';
-                lineColor = 'rgba(99, 102, 241, 0.08)';
+                particleColor = 'rgba(14, 165, 233, 0.45)';
+                secondaryColor = 'rgba(56, 189, 248, 0.4)';
+                lineColor = 'rgba(14, 165, 233, 0.08)';
             }
         };
 
@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Compute opacity based on proximity (closer = more opaque)
                         const proximity = 1 - (distance / 110);
                         const alpha = proximity * (htmlElement.classList.contains('light-mode') ? 0.06 : 0.12);
-                        const baseRGB = htmlElement.classList.contains('light-mode') ? '79, 70, 229' : '99, 102, 241';
+                        const baseRGB = htmlElement.classList.contains('light-mode') ? '2, 132, 199' : '14, 165, 233';
                         ctx.strokeStyle = `rgba(${baseRGB}, ${alpha.toFixed(3)})`;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const proximity = 1 - (distance / mouse.radius);
                         // Make connections to mouse look brighter and glowing
                         const alpha = proximity * (htmlElement.classList.contains('light-mode') ? 0.25 : 0.35);
-                        const baseRGB = htmlElement.classList.contains('light-mode') ? '6, 182, 212' : '6, 182, 212'; // Glowing Cyan link
+                        const baseRGB = htmlElement.classList.contains('light-mode') ? '14, 165, 233' : '56, 189, 248'; // Glowing Electric Blue link
                         ctx.strokeStyle = `rgba(${baseRGB}, ${alpha.toFixed(3)})`;
                         ctx.lineWidth = 1.5;
                         ctx.beginPath();
@@ -431,11 +431,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     const formSuccessPopup = document.getElementById('form-success');
     const submitBtn = document.getElementById('btn-submit');
+    let formTimeoutId = null; // Store timer ID to prevent overlapping timeouts (fixes race condition)
 
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
+            // Clear any active banner timeouts from previous submits
+            if (formTimeoutId) {
+                clearTimeout(formTimeoutId);
+            }
+
             // Visual submit state loading lock
             submitBtn.style.pointerEvents = 'none';
             submitBtn.style.opacity = '0.75';
@@ -507,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Automatically fade out message banner and restore button text after 6s
-            setTimeout(() => {
+            formTimeoutId = setTimeout(() => {
                 formSuccessPopup.style.display = 'none';
                 submitBtn.innerHTML = `
                     Send Message
@@ -516,6 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                     </svg>
                 `;
+                formTimeoutId = null;
             }, 6000);
         });
     }
@@ -547,31 +554,9 @@ document.addEventListener('DOMContentLoaded', () => {
             widget.classList.remove('active');
         });
 
-        // Chat Context memory block
-        const systemPrompt = `You are MG AI Assistant (Mohamed Ghanem's AI Assistant). You speak on behalf of Mohamed Ghanem to portfolio visitors. Keep your responses concise (under 3 sentences), highly engaging, friendly, and professional. 
-Here are the facts about Mohamed:
-- Name: Mohamed Ghanem
-- Title: AI Engineer & Computer Science Student at El Shorouk Academy.
-- Bio: Passionate CS student dedicated to Machine Learning, Large Language Models (LLMs), and prompt engineering. He doesn't just use AI; he aims to understand their core mechanisms and develop smart, practical applications.
-- Skills: Python, Machine Learning, Deep Learning, LLM APIs, Prompt Engineering, C#, C, HTML, CSS, JavaScript, SQL.
-- Projects:
-  1. PromptCraft Studio: An interactive prompt playground and library.
-  2. NeuralForge Simulator: A web-based visualizer for Neural Networks.
-  3. LocalAgent Assistant: A local LLM agent manager powered by Ollama.
-  4. PyStream Analytics: Real-time high-throughput Python streaming engine.
-- Experience:
-  1. Lead Academic Developer at El Shorouk Academy (designing project registration system, tutoring peers).
-  2. Open-source contributor.
-- Social Links:
-  - LinkedIn: https://linkedin.com/in/mohamed-ghanem-cs
-  - GitHub: https://github.com/MohamedGhanem-CS
-  - Email: mohamed.ghanem.work@gmail.com
-- Website Function/Purpose: This website is Mohamed Ghanem's premium single-page developer portfolio. It exists to showcase his skills as an AI Engineer, highlight his custom machine learning projects, share his academic leadership at El Shorouk Academy, and let recruiters, professors, or collaborators connect and build AI systems with him.
-Only talk about Mohamed and this portfolio. If asked about unrelated things, politely steer the conversation back to Mohamed's portfolio, background, or how to contact him. Never invent details.`;
-
-        const conversationHistory = [
-            { role: "system", content: systemPrompt }
-        ];
+        // Chat Context memory block - System Prompt is securely stored and handled on the server side
+        // to protect the Groq API key and quota against client manipulation or bypass.
+        const conversationHistory = [];
 
         // Scroll to bottom
         const scrollToBottom = () => {

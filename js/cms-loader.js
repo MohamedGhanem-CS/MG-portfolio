@@ -20,6 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
             .replace(/'/g, '&#39;');
     };
 
+    // Helper to sanitize and validate URLs, preventing DOM-based XSS (e.g. javascript: schemes)
+    const safeUrl = (url) => {
+        if (url === null || url === undefined) return '#';
+        const cleaned = String(url).trim();
+        // Block dangerous schemes
+        if (cleaned.toLowerCase().startsWith('javascript:') || cleaned.toLowerCase().startsWith('data:')) {
+            console.warn('CMS Loader: Blocked dangerous URL protocol.', cleaned);
+            return '#';
+        }
+        return cleaned;
+    };
+
     // We fetch JSON resources asynchronously
     const loadCMSContent = async () => {
         try {
@@ -90,28 +102,47 @@ document.addEventListener('DOMContentLoaded', () => {
             avatarEl.src = data.profile_image;
         }
 
-        // Update Social Links
+        // Update Document Title & SEO tags dynamically for premium SEO integration
+        if (data.name) {
+            document.title = `${data.name} | AI Engineer & CS Student Portfolio`;
+        }
+
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc && data.description) {
+            metaDesc.setAttribute('content', data.description);
+        }
+
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle && data.name) {
+            ogTitle.setAttribute('content', `${data.name} | AI Engineer & CS Student Portfolio`);
+        }
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc && data.description) {
+            ogDesc.setAttribute('content', data.description);
+        }
+
+        // Update Social Links (with URL safety validation)
         const githubLinks = document.querySelectorAll('a[href*="github.com"]');
         if (githubLinks && data.github) {
             githubLinks.forEach(link => {
                 if (!link.classList.contains('project-link')) {
-                    link.href = data.github;
+                    link.href = safeUrl(data.github);
                 }
             });
         }
 
         const linkedinLinks = document.querySelectorAll('a[href*="linkedin.com"]');
         if (linkedinLinks && data.linkedin) {
-            linkedinLinks.forEach(link => link.href = data.linkedin);
+            linkedinLinks.forEach(link => link.href = safeUrl(data.linkedin));
         }
 
-        // Update Gmail composits
+        // Update Gmail composits (Fixes selector bug to properly bind the main email button)
         if (data.gmail) {
-            const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${data.gmail}`;
-            const gmailLinks = document.querySelectorAll('.social-icon.gmail, .btn-nav-contact, #hero-btn-contact');
+            const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(data.gmail)}`;
+            const gmailLinks = document.querySelectorAll('.social-btn.email, .social-icon.gmail, .btn-nav-contact, #hero-btn-contact');
             gmailLinks.forEach(link => {
                 if (link.tagName === 'A' && (link.href.includes('mailto:') || link.href.includes('mail.google.com'))) {
-                    link.href = gmailComposeUrl;
+                    link.href = safeUrl(gmailComposeUrl);
                 }
             });
         }
@@ -121,16 +152,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateAbout = (data) => {
         if (!data) return;
 
-        // Update Biography paragraphs
+        // Update Biography paragraphs dynamically (flexible paragraph count support)
         const bioContainer = document.querySelector('.about-content');
         if (bioContainer && data.bio) {
-            // Keep the header <h3> and stats, only replace paragraphs
-            const paragraphs = bioContainer.querySelectorAll('p');
+            // Remove existing paragraphs to avoid stale structures
+            const existingParagraphs = bioContainer.querySelectorAll('p');
+            existingParagraphs.forEach(p => p.remove());
+
             const bioTexts = data.bio.split('\n\n');
-            
-            paragraphs.forEach((p, idx) => {
-                if (bioTexts[idx]) {
-                    p.textContent = bioTexts[idx];
+            const statsCard = bioContainer.querySelector('.about-stats');
+
+            bioTexts.forEach(text => {
+                if (text.trim()) {
+                    const pEl = document.createElement('p');
+                    pEl.textContent = text.trim();
+                    if (statsCard) {
+                        bioContainer.insertBefore(pEl, statsCard);
+                    } else {
+                        bioContainer.appendChild(pEl);
+                    }
                 }
             });
         }
@@ -243,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Build external link HTML
             let linksHtml = `
-                <a href="${sanitize(project.github_url)}" class="project-link" target="_blank" rel="noopener noreferrer">
+                <a href="${safeUrl(project.github_url)}" class="project-link" target="_blank" rel="noopener noreferrer">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                     Codebase
                 </a>
@@ -251,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (project.demo_url) {
                 linksHtml += `
-                    <a href="${sanitize(project.demo_url)}" class="project-link demo" target="_blank" rel="noopener noreferrer">
+                    <a href="${safeUrl(project.demo_url)}" class="project-link demo" target="_blank" rel="noopener noreferrer">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                         Live Demo
                     </a>
